@@ -26,6 +26,7 @@ public class UserResource {
 		
 		return ResponseEntity.ok().body(list);
 		
+		
 	}
 	
 	@GetMapping(value = "/{id}")
