@@ -87,9 +87,9 @@ public class OrderItem implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		
 		OrderItem other = (OrderItem) obj;
 		return Objects.equals(id, other.id);
 	}
 
+	
 }
