@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem implements Serializable {
+public class Orderitem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,11 +25,11 @@ public class OrderItem implements Serializable {
 	private Double price;
 	
 
-	public OrderItem() {
+	public Orderitem() {
 
 	}
 
-	public OrderItem(Order order, Product product, Integer quantity, Double price) {
+	public Orderitem(Order order, Product product, Integer quantity, Double price) {
 		super();
 		id.setOrder(order);
 		id.setProduct(product);
@@ -87,7 +87,7 @@ public class OrderItem implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrderItem other = (OrderItem) obj;
+		Orderitem other = (Orderitem) obj;
 		return Objects.equals(id, other.id);
 	}
 
