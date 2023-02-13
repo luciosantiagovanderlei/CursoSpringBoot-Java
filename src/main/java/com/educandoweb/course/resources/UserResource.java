@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.services.UserService;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -24,7 +25,11 @@ public class UserResource {
 	
 	@Autowired
 	private UserService service;
-	
+
+	public UserResource(UserService service) {
+		this.service = service;
+	}
+
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
 		
@@ -40,9 +45,9 @@ public class UserResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> insert(@RequestBody User obj){
+	public ResponseEntity<User> insert(@RequestBody User obj, UriComponentsBuilder uriComponentsBuilder){
 		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 		
 	}
